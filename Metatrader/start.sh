@@ -50,8 +50,8 @@ else
     show_message "[1/7] Mono is already installed."
 fi
 
-# Prima di installare MT4, rimuovi eventuali chiavi di registro di MetaTrader5
-show_message "[0/7] Rimuovendo eventuali chiavi MT5 dal registro Wine..."
+# Prima di installare MT4, rimuovi eventuali chiavi di registro di MetaTrader4
+show_message "[0/7] Rimuovendo eventuali chiavi MT4 dal registro Wine..."
 $wine_executable reg delete "HKEY_CURRENT_USER\\Software\\MetaQuotes" /f 2>/dev/null
 
 # Check if MetaTrader 4 is already installed
@@ -98,16 +98,16 @@ show_message "[6/7] Installing MetaTrader4 library in Windows"
 if ! is_wine_python_package_installed "MetaTrader4==$metatrader_version"; then
     $wine_executable python -m pip install --no-cache-dir MetaTrader4==$metatrader_version
 fi
-# Install mt5linux library in Windows if not installed
-show_message "[6/7] Checking and installing mt5linux library in Windows if necessary"
-if ! is_wine_python_package_installed "mt5linux"; then
-    $wine_executable python -m pip install --no-cache-dir mt5linux
+# Install mt4linux library in Windows if not installed
+show_message "[6/7] Checking and installing mt4linux library in Windows if necessary"
+if ! is_wine_python_package_installed "mt4linux"; then
+    $wine_executable python -m pip install --no-cache-dir mt4linux
 fi
 
-# Install mt5linux library in Linux if not installed
-show_message "[6/7] Checking and installing mt5linux library in Linux if necessary"
-if ! is_python_package_installed "mt5linux"; then
-    pip install --upgrade --no-cache-dir mt5linux
+# Install mt4linux library in Linux if not installed
+show_message "[6/7] Checking and installing mt4linux library in Linux if necessary"
+if ! is_python_package_installed "mt4linux"; then
+    pip install --upgrade --no-cache-dir mt4linux
 fi
 
 # Install pyxdg library in Linux if not installed
@@ -118,7 +118,7 @@ fi
 
 # Start the MT4 server on Linux
 show_message "[7/7] Starting the mt4linux server..."
-python3 -m mt5linux --host 0.0.0.0 -p $mt4server_port -w $wine_executable python.exe &
+python3 -m mt4linux --host 0.0.0.0 -p $mt4server_port -w $wine_executable python.exe &
 
 # Give the server some time to start
 sleep 5

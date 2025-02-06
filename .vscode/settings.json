@@ -1,0 +1,11 @@
+{
+  "files.watcherExclude": {
+    "**/config_*/**": true
+  },
+  "files.exclude": {
+    "**/config_*/**": true
+  },
+  "search.exclude": {
+    "**/config_*/**": true
+  }
+}

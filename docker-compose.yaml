@@ -1,0 +1,137 @@
+networks:
+  portainer-nginx-proxy-manager_default: #change this to your network
+    external: true
+
+services:
+  mt4_1:
+    container_name: mt4_1
+    image: mt4
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./config_1:/config
+    ports:
+      - 4001:3000
+      - 9001:8001
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "6.0"
+          memory: 16G
+        reservations:
+          cpus: "0.25"
+          memory: 512M
+    restart: unless-stopped
+    networks:
+      - portainer-nginx-proxy-manager_default #change this to your network
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  mt4_2:
+    container_name: mt4_2
+    image: mt4
+    volumes:
+      - ./config_2:/config
+    ports:
+      - 4002:3000
+      - 9002:8001
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "6.0"
+          memory: 16G
+        reservations:
+          cpus: "0.25"
+          memory: 512M
+    restart: unless-stopped
+    networks:
+      - portainer-nginx-proxy-manager_default #change this to your network
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  mt4_3:
+    container_name: mt4_3
+    image: mt4
+    volumes:
+      - ./config_3:/config
+    ports:
+      - 4003:3000
+      - 9003:8001
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "6.0"
+          memory: 16G
+        reservations:
+          cpus: "0.25"
+          memory: 512M
+    restart: unless-stopped
+    networks:
+      - portainer-nginx-proxy-manager_default #change this to your network
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  mt4_4:
+    container_name: mt4_4
+    image: mt4
+    volumes:
+      - ./config_4:/config
+    ports:
+      - 4004:3000
+      - 9004:8001
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "6.0"
+          memory: 16G
+        reservations:
+          cpus: "0.25"
+          memory: 512M
+    restart: unless-stopped
+    networks:
+      - portainer-nginx-proxy-manager_default #change this to your network
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  mt4_5:
+    container_name: mt4_5
+    image: mt4
+    volumes:
+      - ./config_5:/config
+    ports:
+      - 4005:3000
+      - 9005:8001
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          cpus: "6.0"
+          memory: 16G
+        reservations:
+          cpus: "0.25"
+          memory: 512M
+    restart: unless-stopped
+    networks:
+      - portainer-nginx-proxy-manager_default #change this to your network
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
